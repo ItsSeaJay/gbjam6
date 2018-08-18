@@ -2,4 +2,6 @@
 
 [node name="Player" type="Node"]
 
+[node name="Hand" type="Node2D" parent="." index="0"]
+
 
