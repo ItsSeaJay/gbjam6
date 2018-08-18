@@ -3,7 +3,7 @@
 [ext_resource path="res://Scripts/Card.gd" type="Script" id=1]
 [ext_resource path="res://Textures/card.png" type="Texture" id=2]
 
-[node name="Card" type="Node2D" index="0"]
+[node name="Card" type="Node2D"]
 
 script = ExtResource( 1 )
 

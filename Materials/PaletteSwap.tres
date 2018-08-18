@@ -1,7 +1,8 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
 [ext_resource path="res://Shaders/Godotboy.shader" type="Shader" id=1]
-[ext_resource path="res://Textures/gb.png" type="Texture" id=2]
+[ext_resource path="res://Palettes/gb.png" type="Texture" id=2]
+
 
 [resource]
 

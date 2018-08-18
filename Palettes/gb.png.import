@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gb.png-1ae29ad1f55d31e57158ad7b1d58c303.stex"
+path="res://.import/gb.png-75f3442888783352e430136a716d422e.stex"
 
 [deps]
 
-source_file="res://Textures/gb.png"
-dest_files=[ "res://.import/gb.png-1ae29ad1f55d31e57158ad7b1d58c303.stex" ]
+source_file="res://Palettes/gb.png"
+dest_files=[ "res://.import/gb.png-75f3442888783352e430136a716d422e.stex" ]
 
 [params]
 
