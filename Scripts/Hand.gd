@@ -20,7 +20,7 @@ func _process(delta):
 func draw():
 	# TODO: obtain the card instance from the actual deck
 	#       instead of creating new ones
-	var instance = card.instance()
+	var instance = deck.cards[deck.cards.size() - 1]
 	
 	cards.push_back(instance)
 	add_child(instance)
@@ -36,5 +36,5 @@ func draw():
 		
 		cards[i].global_position.x = origin.x + offset - center
 		cards[i].global_position.y = origin.y
-		
-		print("Global Position [", i, "]:", cards[i].global_position)
+	
+	deck.cards.pop_back()
