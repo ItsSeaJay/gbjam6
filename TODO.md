@@ -1,0 +1,1 @@
+- Set the positions of cards in the hand so they fit in the bottom center ✓
