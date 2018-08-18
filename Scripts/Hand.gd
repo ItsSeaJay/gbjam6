@@ -23,9 +23,8 @@ func draw():
 	var instance = deck.cards[deck.cards.size() - 1]
 	
 	cards.push_back(instance)
+	deck.remove_child(instance)
 	add_child(instance)
-	
-	print(instance.title)
 	
 	# Recalculate the positions of each card in the hand
 	for i in range(cards.size()):
