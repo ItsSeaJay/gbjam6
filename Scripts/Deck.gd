@@ -3,7 +3,7 @@ extends Node2D
 var cards = []
 var card = load("res://Scenes/Card.tscn")
 
-onready var label = get_node("Label")
+onready var label = get_node("../Control/DeckCount")
 
 func _ready():
 	for i in range(0, 20):
