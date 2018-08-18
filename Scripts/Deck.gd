@@ -12,6 +12,11 @@ func _ready():
 		
 		add_child(instance)
 		cards.push_back(instance)
+	
+	self.shuffle()
 
 func _process(delta):
 	label.text = str(cards.size())
+
+func shuffle():
+	pass
