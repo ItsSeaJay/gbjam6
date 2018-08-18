@@ -1,14 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Hand.gd" type="Script" id=1]
+[ext_resource path="res://Textures/hand.png" type="Texture" id=2]
 
 [node name="Player" type="Node" index="0"]
 
 [node name="Hand" type="Node2D" parent="." index="0"]
 
+position = Vector2( 80, 140 )
 script = ExtResource( 1 )
 MAX_SIZE = 4
 
+[node name="Sprite" type="Sprite" parent="Hand" index="0"]
+
+visible = false
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Deck" type="Node2D" parent="." index="1"]
+
+position = Vector2( 10, 130 )
 
 
