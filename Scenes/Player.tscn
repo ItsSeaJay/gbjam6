@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Deck.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/DynamicFonts/m3x6.tres" type="DynamicFont" id=4]
 
-[node name="Player" type="Node" index="0"]
+[node name="Player" type="Node"]
 
 [node name="Hand" type="Node2D" parent="." index="0"]
 

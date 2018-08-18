@@ -4,16 +4,14 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Materials/PaletteSwap.tres" type="Material" id=3]
 
-[node name="Battle" type="Node"]
+[node name="Battle" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
 [node name="Player" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="Opponent" parent="." index="1" instance=ExtResource( 2 )]
-
-[node name="Control" type="Control" parent="." index="2"]
+[node name="Control" type="Control" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
