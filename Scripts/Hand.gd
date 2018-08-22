@@ -2,13 +2,11 @@ extends Node2D
 
 export var MAX_SIZE = 4
 
-var card = load("res://Scenes/Card.tscn")
 var cards = []
+var card = load("res://Scenes/Card.tscn")
 
 onready var deck = get_node("../Deck")
-
-func _ready():
-	connect("card_draw", Cursor, "_on_card_drawn")
+onready var cursor = get_node("../Cursor")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
@@ -30,7 +28,7 @@ func draw_card():
 	instance.add_to_group("Zone")
 	
 	# Let the cursor (and anything else) know that a card has been drawn
-	emit_signal("card_draw")
+	emit_signal("card_draw", self)
 	
 	# Recalculate the positions of each card in the hand
 	for i in range(cards.size()):

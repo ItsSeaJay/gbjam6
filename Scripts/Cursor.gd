@@ -8,7 +8,9 @@ var selection = {
 }
 
 func _ready():
-	self.zones = get_zones()
+	zones = self.get_zones()
+	
+	connect("card_draw", self, "_on_card_drawn")
 
 func _process(delta):
 	global_position = zones[selection.x].global_position
@@ -25,8 +27,7 @@ func _process(delta):
 		else:
 			selection.x = selection.x - 1
 
-func _on_card_drawn():
-	zones = get_zones()
+func _on_card_drawn(node):
 	print("emit")
 
 func get_zones():
