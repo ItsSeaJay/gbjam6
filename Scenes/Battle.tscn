@@ -1,24 +1,86 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Battle.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Textures/indicator.png" type="Texture" id=3]
-[ext_resource path="res://Materials/PaletteSwap.tres" type="Material" id=4]
+[ext_resource path="res://Scripts/Hand.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Deck.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/DynamicFonts/m3x6.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scripts/Cursor.gd" type="Script" id=5]
+[ext_resource path="res://Textures/indicator.png" type="Texture" id=6]
+[ext_resource path="res://Materials/PaletteSwap.tres" type="Material" id=7]
 
 [node name="Battle" type="Node" index="0"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause" ]
 
-[node name="Player" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Player" type="Node" parent="." index="0"]
+
+[node name="Hand" type="Node2D" parent="Player" index="0"]
+
+position = Vector2( 80, 140 )
+script = ExtResource( 2 )
+MAX_SIZE = 4
+
+[node name="Deck" type="Node2D" parent="Player" index="1" groups=[
+"Zone",
+]]
+
+position = Vector2( 10, 130 )
+script = ExtResource( 3 )
+
+[node name="DiscardPile" type="Node2D" parent="Player" index="2" groups=[
+"Zone",
+]]
+
+position = Vector2( 140, 130 )
+
+[node name="Control" type="Control" parent="Player" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DeckCount" type="Label" parent="Player/Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_bottom = -8.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Count"
+valign = 2
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "custom_colors", "custom_fonts" ]
 
 [node name="Cursor" type="Node2D" parent="." index="1"]
 
 position = Vector2( 80, 112 )
+script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="Cursor" index="0"]
 
-texture = ExtResource( 3 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -42,7 +104,7 @@ __meta__ = {
 
 [node name="ColorRect" type="ColorRect" parent="Control" index="0"]
 
-material = ExtResource( 4 )
+material = ExtResource( 7 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
