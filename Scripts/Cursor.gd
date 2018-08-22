@@ -8,12 +8,10 @@ var selection = {
 }
 
 func _ready():
-	zones = self.get_zones()
+	self.zones = get_zones()
 
 func _process(delta):
 	global_position = zones[selection.x].global_position
-	
-	print(selection.x)
 	
 	if Input.is_action_just_pressed("ui_right"):
 		if selection.x >= zones.size() - 1:
@@ -27,7 +25,11 @@ func _process(delta):
 		else:
 			selection.x = selection.x - 1
 
+func _on_card_drawn():
+	zones = get_zones()
+	print("emit")
+
 func get_zones():
-	var zones = get_tree().get_nodes_in_group("Zone")
+	var z = get_tree().get_nodes_in_group("Zone")
 	
-	return zones
+	return z

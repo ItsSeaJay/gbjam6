@@ -8,18 +8,16 @@ var cards = []
 onready var deck = get_node("../Deck")
 
 func _ready():
-	pass
+	connect("card_draw", Cursor, "_on_card_drawn")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		if len(cards) < MAX_SIZE:
 			# Add a card to the hand from the deck
-			self.draw()
+			self.draw_card()
 
 # Draws a card from the deck
-func draw():
-	# TODO: obtain the card instance from the actual deck
-	#       instead of creating new ones
+func draw_card():
 	var instance = deck.cards[deck.cards.size() - 1]
 	
 	# Move the top card of the deck into the hand
@@ -27,7 +25,12 @@ func draw():
 	deck.remove_child(instance)
 	add_child(instance)
 	
-	print(instance.title)
+	# Cards in the hand are treated as a unique "zone" that can be selected
+	# by the cursor
+	instance.add_to_group("Zone")
+	
+	# Let the cursor (and anything else) know that a card has been drawn
+	emit_signal("card_draw")
 	
 	# Recalculate the positions of each card in the hand
 	for i in range(cards.size()):
