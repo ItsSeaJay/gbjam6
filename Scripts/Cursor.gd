@@ -2,13 +2,32 @@ extends Node2D
 
 # Keep a list of all of the things we can hover over
 var zones = []
-
-# Default to having the cursor on the deck
-onready var selection = get_node("../Player/Deck")
+var selection = {
+	x = 0,
+	y = 0
+}
 
 func _ready():
-	zones = get_tree().get_nodes_in_group("Zone")
-	print(zones.size())
+	zones = self.get_zones()
 
 func _process(delta):
-	global_position = selection.global_position
+	global_position = zones[selection.x].global_position
+	
+	print(selection.x)
+	
+	if Input.is_action_just_pressed("ui_right"):
+		if selection.x >= zones.size() - 1:
+			selection.x = 0
+		else:
+			selection.x = selection.x + 1
+	
+	if Input.is_action_just_pressed("ui_left"):
+		if selection.x <= 0:
+			selection.x = zones.size() - 1
+		else:
+			selection.x = selection.x - 1
+
+func get_zones():
+	var zones = get_tree().get_nodes_in_group("Zone")
+	
+	return zones
