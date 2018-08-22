@@ -27,6 +27,7 @@ MAX_SIZE = 4
 
 position = Vector2( 10, 130 )
 script = ExtResource( 3 )
+_sections_unfolded = [ "Material" ]
 
 [node name="DiscardPile" type="Node2D" parent="Player" index="2" groups=[
 "Zone",

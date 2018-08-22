@@ -6,7 +6,15 @@ var cards = []
 var card = load("res://Scenes/Card.tscn")
 
 onready var deck = get_node("../Deck")
-onready var cursor = get_node("../Cursor")
+onready var cursor = get_node("../../Cursor")
+
+signal witch
+
+func _ready():
+	self.connect("witch", self, "_test")
+	self.emit_signal("witch")
+	
+	cursor.connect("wizard", self, "_test")
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
@@ -27,9 +35,6 @@ func draw_card():
 	# by the cursor
 	instance.add_to_group("Zone")
 	
-	# Let the cursor (and anything else) know that a card has been drawn
-	emit_signal("card_draw", self)
-	
 	# Recalculate the positions of each card in the hand
 	for i in range(cards.size()):
 		var margin = 0
@@ -45,3 +50,6 @@ func draw_card():
 	deck.cards.pop_back()
 	
 	return instance
+
+func _test():
+	print("If you're reading this, then you're a witch.")

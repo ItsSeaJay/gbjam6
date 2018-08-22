@@ -7,10 +7,14 @@ var selection = {
 	y = 0
 }
 
+onready var hand = get_node("../Player/Hand")
+
+signal wizard
+
 func _ready():
 	zones = self.get_zones()
-	
-	connect("card_draw", self, "_on_card_drawn")
+
+	self.emit_signal("wizard")
 
 func _process(delta):
 	global_position = zones[selection.x].global_position
@@ -27,8 +31,8 @@ func _process(delta):
 		else:
 			selection.x = selection.x - 1
 
-func _on_card_drawn(node):
-	print("emit")
+func _test():
+	print("If you're reading this, then you're a wizard.")
 
 func get_zones():
 	var z = get_tree().get_nodes_in_group("Zone")
